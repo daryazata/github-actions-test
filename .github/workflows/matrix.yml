@@ -6,13 +6,24 @@ jobs:
   node-version:
     strategy:
       matrix:
-        # os:
-        #   - ubuntu-latest
-        #   - windows-latest
-        #   - macos-latest
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
         node_version: [6, 17, 10]
-    # runs-on: ${{ matrix.os }}
-    runs-on: ubuntu-latest
+        include:
+          - os: windows-latest
+            node_version: 10
+            is_windows_node_10: true
+        exclude:
+          - os: ubuntu-latest
+            node_version: 7
+          - os: macos-latest
+            node_version: 10
+    runs-on: ${{ matrix.os }}
+    env:
+      IS_WINDOWS_NODE_10: ${{ matrix.is_windows_node_10 }}
+    # runs-on: ubuntu-latest
     steps:
       - name: Log Node Version
         run: node -v
@@ -20,4 +31,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Log Node Version
-        run: node -v
+        run: |
+          node -v
+          echo $IS_WINDOWS_NODE_10
