@@ -10,7 +10,7 @@ jobs:
         #   - ubuntu-latest
         #   - windows-latest
         #   - macos-latest
-        node-version: [6, 17, 10]
+        node_version: [6, 17, 10]
     # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
     steps:
