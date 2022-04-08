@@ -5,9 +5,12 @@ on: [push]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - name: echo a string
         run: echo "hello yaml"
+        continue-on-error: true # all next steps will continue even if this will fail
+        timeout-minutes: 1
       - name: multiple script
         run: |
           node -v
