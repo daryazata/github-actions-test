@@ -6,7 +6,7 @@ on:
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
-    if: github.event_name == "push" # will only run on 'push' event
+    if: github.event_name == 'push' # will only run on 'push' event
     steps:
       - name: Dump GitHub context
         id: github_context_step
