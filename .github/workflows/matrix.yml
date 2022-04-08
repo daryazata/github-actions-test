@@ -9,16 +9,15 @@ jobs:
         os:
           - ubuntu-latest
           - windows-latest
-          - macos-latest
         node_version: [6, 17, 10]
         include:
           - os: windows-latest
             node_version: 10
-            is_windows_node_10: true
+            is_windows_node_10: 'true'
         exclude:
           - os: ubuntu-latest
             node_version: 7
-          - os: macos-latest
+          - os: ubuntu-latest
             node_version: 10
     runs-on: ${{ matrix.os }}
     env:
